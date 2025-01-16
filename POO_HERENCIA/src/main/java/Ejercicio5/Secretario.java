@@ -1,6 +1,6 @@
 package Ejercicio5;
 
-public class Secretario extends Empleado {
+public class Secretario extends Empleado implements CotizacionSegSocial{
     private String despacho;
     private String numFax;
 

@@ -1,6 +1,6 @@
 package Ejercicio5;
 
-public class JefeDeZona extends Empleado {
+public class JefeDeZona extends Empleado implements CotizacionSegSocial{
     private String despacho;
     private Secretario secretario;
     private Vendedor[] vendedores;

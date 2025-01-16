@@ -1,6 +1,6 @@
 package Ejercicio5;
 
-public class Vendedor extends Empleado{
+public class Vendedor extends Empleado implements CotizacionSegSocial{
     private CocheEmpresa coche;
     private String telefonoMovil;
     private String areaVenta;
