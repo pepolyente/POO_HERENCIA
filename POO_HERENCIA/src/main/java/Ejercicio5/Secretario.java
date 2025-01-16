@@ -1,6 +1,6 @@
 package Ejercicio5;
 
-public class Secretario extends Empleado implements CotizacionSegSocial{
+public class Secretario extends Empleado {
     private String despacho;
     private String numFax;
 
@@ -35,8 +35,8 @@ public class Secretario extends Empleado implements CotizacionSegSocial{
         return super.getSalario();
     }
     @Override
-    public  Empleado getSupervisor(Empleado supervisor){
-       return supervisor;
+    public  Empleado getSupervisor(){
+       return super.getSupervisor();
     }
     public String getDescpacho() {
         return despacho;
@@ -45,16 +45,30 @@ public class Secretario extends Empleado implements CotizacionSegSocial{
         return numFax;
     }
     @Override
-    public void cambiarSupervisor(){
+    public  void cambiarSupervisor(Empleado supervisor){
+        if (supervisor instanceof Secretario || supervisor instanceof JefeDeZona){
+            setSupervisor(supervisor);
+        }
+    }
+    @Override
+    public void incrementarSalario(){
 
     }
     @Override
-    public void incrementarSalario(double salario){
+    public double calcularIRPF(){
+        return 0;
+    }
+    @Override
+    public double calcularContingenciasComunes(){
+        return 0;
+    }
+    @Override
+    public void imprimirEtiqueta(){
 
     }
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder("(Secretario\n) ");
+        StringBuilder str = new StringBuilder("(Secretario)\n ");
         str.append(super.toString()).append(" Tiene el despacho: ").append(getDescpacho()).append(" y número de fax ").append(getNumFax());
         return str.toString();
     }

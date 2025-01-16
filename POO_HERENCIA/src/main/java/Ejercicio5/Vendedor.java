@@ -1,13 +1,13 @@
 package Ejercicio5;
 
-public class Vendedor extends Empleado implements CotizacionSegSocial{
+public class Vendedor extends Empleado {
     private CocheEmpresa coche;
     private String telefonoMovil;
     private String areaVenta;
     private String[] clientes;
     private double porcComisiones;
 
-    public Vendedor(String nombre, String apellido1, String apellido2, String dni, String telefono, double salario, CocheEmpresa coche, String cliente, double porcComisiones) {
+    public Vendedor(String nombre, String apellido1, String apellido2, String dni, String telefono, double salario, CocheEmpresa coche, String cliente, double porcComisiones ) {
         super(nombre, apellido1, apellido2, dni, telefono, salario);
         this.coche = coche;
         this.clientes = new String[0];
@@ -37,8 +37,8 @@ public class Vendedor extends Empleado implements CotizacionSegSocial{
         return super.getSalario();
     }
     @Override
-    public  Empleado getSupervisor(Empleado supervisor){
-        return supervisor;
+    public  Empleado getSupervisor(){
+        return super.getSupervisor();
     }
     public CocheEmpresa getCoche() {
         return coche;
@@ -86,17 +86,30 @@ public class Vendedor extends Empleado implements CotizacionSegSocial{
         this.coche = coche;
     }
     @Override
-    public  void cambiarSupervisor(){
-
+    public  void cambiarSupervisor(Empleado supervisor){
+        if (supervisor instanceof Secretario || supervisor instanceof JefeDeZona){
+            setSupervisor(supervisor);
+        }
     }
     @Override
-    public  void incrementarSalario(double salario){
+    public  void incrementarSalario(){
+        setSalario(getSalario()+getSalario()*0.15);
+    }
+    @Override
+    public double calcularIRPF(){
+        return 0;
+    }
+    @Override
+    public double calcularContingenciasComunes(){
+        return 0;
+    }
+    @Override
+    public void imprimirEtiqueta(){
 
     }
-
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder("(Vendedor\n) ");
+        StringBuilder str = new StringBuilder("(Vendedor)\n ");
         str.append(super.toString()).append(" Coche de empresa: ").append(this.coche).append("\n")
                 .append("Teléfono de ventas: "+telefonoMovil+"\n")
                 .append("Area Venta: "+areaVenta+"\n")

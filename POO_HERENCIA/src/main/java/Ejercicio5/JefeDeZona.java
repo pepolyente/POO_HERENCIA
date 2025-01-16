@@ -1,6 +1,6 @@
 package Ejercicio5;
 
-public class JefeDeZona extends Empleado implements CotizacionSegSocial{
+public class JefeDeZona extends Empleado {
     private String despacho;
     private Secretario secretario;
     private Vendedor[] vendedores;
@@ -63,23 +63,39 @@ public class JefeDeZona extends Empleado implements CotizacionSegSocial{
     }
 
     @Override
-    public void cambiarSupervisor() {
+    public void cambiarSupervisor(Empleado supervisor) {
+        if (supervisor instanceof Secretario || supervisor instanceof JefeDeZona) {
+            setSupervisor(supervisor);
+        } else {
+            throw new IllegalArgumentException("El supervisor debe ser un Secretario o JefeDeZona.");
+        }
+    }
 
+
+    @Override
+    public void incrementarSalario() {
+        setSalario(getSalario() );
     }
 
     @Override
-    public void incrementarSalario(double salario) {
-
+    public Empleado getSupervisor(){
+        return super.getSupervisor();
     }
-
     @Override
-    public Empleado getSupervisor(Empleado supervisor) {
-        return supervisor;
+    public double calcularIRPF(){
+        return 0;
     }
+    @Override
+    public double calcularContingenciasComunes(){
+        return 0;
+    }
+    @Override
+    public void imprimirEtiqueta(){
 
+    }
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder("(Jefe de Zona)\n) ");
+        StringBuilder str = new StringBuilder("(Jefe de Zona)\n ");
         str.append(super.toString())
                 .append(" Coche de empresa: ").append(this.coche).append("\n")
                 .append("Despacho: ").append(despacho).append("\n")

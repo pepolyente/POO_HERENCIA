@@ -1,8 +1,8 @@
 package Ejercicio5;
 
 public interface CotizacionSegSocial {
-    double calcularIRPF(double salario);
-    double calcularContingenciasComunes(double salario);
+    double calcularIRPF();
+    double calcularContingenciasComunes();
     void imprimirEtiqueta();
 
 }

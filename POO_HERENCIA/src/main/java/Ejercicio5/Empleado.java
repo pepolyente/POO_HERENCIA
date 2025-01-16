@@ -2,7 +2,7 @@ package Ejercicio5;
 
 import java.time.LocalDate;
 
-public abstract class Empleado {
+public abstract class Empleado implements CotizacionSegSocial{
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -21,6 +21,7 @@ public abstract class Empleado {
         this.dni = dni;
         this.telefono = telefono;
         this.salario = salario;
+        supervisor = null;
     }
     public String getNombre() {
         return nombre;
@@ -46,9 +47,17 @@ public abstract class Empleado {
     public double getSalario() {
         return salario;
     }
-    public abstract Empleado getSupervisor(Empleado supervisor);
-    public abstract void cambiarSupervisor();
-    public abstract void incrementarSalario(double salario);
+    public void setSupervisor(Empleado supervisor) {
+        this.supervisor = supervisor;
+    }
+    public Empleado getSupervisor(){
+        return supervisor;
+    }
+    public abstract void cambiarSupervisor(Empleado supervisor);
+    public abstract void incrementarSalario();
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 
     @Override
     public String toString() {
